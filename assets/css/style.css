@@ -135,12 +135,14 @@ section#visualization .graph .block {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 }
 
 section#visualization .graph .block .data {
   width: 66.666%;
   background-color: #6366f1;
   position: relative;
+  animation: toTop 0.5s forwards cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 section#visualization .block .data:hover .data-legend {
   display: flex;
@@ -191,4 +193,13 @@ section#visualization p.x-legend {
   font-family: 'KaTeX_Math';
   font-size: 1.25rem;
   color: #334155;
+}
+
+@keyframes toTop {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 100%;
+  }
 }

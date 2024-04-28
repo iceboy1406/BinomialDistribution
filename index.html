@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distribusi Probabilitas Binomial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: 'KaTeX_Math';
+        src: url('assets/fonts/KaTeX_Math-Italic.ttf');
+      }
+    </style>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <h1 class="title">Sebaran Peluang Diskrit Binomial</h1>
+    <p class="formula">
+      b(x; n, p) = <sub>n</sub>C<sub>x</sub> p<sup>x</sup> (1-p)<sup>n-x</sup>
+    </p>
+    <form>
+      <div class="form-group">
+        <label for="n">Jumlah Percobaan (n)</label>
+        <input
+          type="number"
+          id="n"
+          name="n"
+          min="1"
+          max="170"
+          placeholder="1-170"
+          autofocus
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="p">Peluang Sukses (p)</label>
+        <input
+          type="number"
+          id="p"
+          name="p"
+          placeholder="0-1"
+          step="any"
+          min="0"
+          max="1"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Peluang Gagal (q atau 1 - p)</label>
+        <input type="number" id="q" name="q" disabled />
+      </div>
+      <button type="submit">Proses</button>
+    </form>
+    <section id="visualization">
+      <aside class="left">
+        <p class="y-legend">Peluang (b(x; n, p))</p>
+        <div class="y-axis-list">
+          <!-- Children rendered by JS -->
+        </div>
+      </aside>
+      <aside class="right">
+        <div class="graph">
+          <!-- Children rendered by JS -->
+        </div>
+        <p class="x-legend">Banyak Percobaan Sukses (x)</p>
+      </aside>
+    </section>
+    <script type="module" src="assets/js/main.js"></script>
+  </body>
+</html>

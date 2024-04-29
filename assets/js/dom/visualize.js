@@ -21,7 +21,8 @@ function visualize(n, p) {
     .map((data) => `<p class="y-axis">${data}</p>`)
     .join('');
 
-  graph.innerHTML = result
+  graph.innerHTML = '';
+  graph.innerHTML += result
     .slice(range.start, range.end + 1)
     .map(
       (data) =>
@@ -38,6 +39,16 @@ function visualize(n, p) {
       </div>`,
     )
     .join('');
+  graph.innerHTML += `
+    <div class="graph-lines">
+      ${yAxises
+        .map(
+          (data) =>
+            `<div class="graph-line${data == '0.0' ? 'zero' : ''}"></div>`,
+        )
+        .join('')}
+    </div>
+  `;
 }
 
 export default visualize;

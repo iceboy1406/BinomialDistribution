@@ -13,7 +13,8 @@ import getDataRange from './getDataRange.js';
 function visualize(n, p) {
   const result = generateBinomialProbabilityDistribution(n, p);
   const max = findMax(result);
-  const yAxises = generateYAxises(Math.ceil(max.b * 10) / 10);
+  const maxYCeiled = Math.ceil(max.b * 10) / 10;
+  const yAxises = generateYAxises(maxYCeiled);
   const range = getDataRange(n, p, max.x);
 
   yAxisList.innerHTML = yAxises
@@ -24,7 +25,7 @@ function visualize(n, p) {
     .slice(range.start, range.end + 1)
     .map(
       (data) =>
-        `<div class="block" style="height: ${(data.b / max.b) * 100}%">
+        `<div class="block" style="height: ${(data.b / maxYCeiled) * 100}%">
         <div class="data">
           <div class="data-legend">
             <p class="data-x">${data.x}</p>

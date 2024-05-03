@@ -5,8 +5,8 @@ const pInput = document.querySelector('input[name=p]');
 const qInput = document.querySelector('input[name=q]');
 
 // Visualization Elements
+const visualizationSection = document.querySelector('#visualization');
 const graph = document.querySelector('#visualization .graph');
 const yAxisList = document.querySelector('#visualization .y-axis-list');
 
-export { form, graph, nInput, pInput, qInput, yAxisList };
-
+export { form, graph, nInput, pInput, qInput, yAxisList, visualizationSection };

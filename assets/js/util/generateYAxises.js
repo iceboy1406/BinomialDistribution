@@ -8,6 +8,9 @@ function generateYAxises(max) {
   let precision = 1;
 
   if (max <= 0.1) {
+    increment = 0.0125;
+    precision = 4;
+  } else if (max <= 0.2) {
     increment = 0.025;
     precision = 3;
   } else if (max <= 0.4) {

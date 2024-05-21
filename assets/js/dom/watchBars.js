@@ -34,7 +34,7 @@ function watchBars() {
         }
       });
     }
-    dataLegend.addEventListener('mouseleave', (e) => {
+    dataLegend.addEventListener('mouseout', (e) => {
       console.log('mouse out', { r: e.relatedTarget.nodeName });
       if (e.relatedTarget.nodeName != 'rect') {
         dataLegend.classList.remove('show');

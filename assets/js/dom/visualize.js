@@ -1,6 +1,5 @@
 import { graph, visualizationSection, yAxisList } from '../dom/domElements.js';
 import generateBinomialProbabilityDistribution from '../math/binomialProbabilityDistribution.js';
-import formatYLegend from '../util/formatYLegend.js';
 import generateYAxises from '../util/generateYAxises.js';
 import getDataRange from '../math/getDataRange.js';
 import watchBars from './watchBars.js';

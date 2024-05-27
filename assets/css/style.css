@@ -126,6 +126,8 @@ section#visualization aside.right {
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
+}
+section#visualization aside.right .graph-area {
   position: relative;
 }
 

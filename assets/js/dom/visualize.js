@@ -1,6 +1,5 @@
 import { graph, visualizationSection, yAxisList } from '../dom/domElements.js';
 import generateBinomialProbabilityDistribution from '../math/binomialProbabilityDistribution.js';
-import findMax from '../math/findMax.js';
 import formatYLegend from '../util/formatYLegend.js';
 import generateYAxises from '../util/generateYAxises.js';
 import getDataRange from '../math/getDataRange.js';
@@ -16,7 +15,7 @@ function visualize(n, p) {
   const max = findMax(result);
   const maxYCeiled = Math.ceil(max.b * 10) / 10;
   const yAxises = generateYAxises(maxYCeiled);
-  const range = getDataRange(n, p, max.x, 30);
+  const range = getDataRange(n, p, max.x, 40);
   const sampleFromResult = result.slice(range.start, range.end + 1);
 
   // Show visualization section (before it's hidden)
@@ -59,6 +58,9 @@ function visualize(n, p) {
       y="0%"
       fill="#334155"
       font-size="${fontSize}px"
+      data-y="${data.b}"
+      data-x="${data.x}"
+      class="x-axis"
     >${data.x}</text>`;
     })
     .join('');
@@ -79,7 +81,7 @@ function visualize(n, p) {
           style="--data-h-animate: ${
             (data.b / maxYCeiled) * 95
           }%; --data-y-animate: -${(data.b / maxYCeiled) * 95 + 5}%;"
-          data-y="${formatYLegend(data.b)}"
+          data-y="${data.b}"
           data-x="${data.x}"
           class="animate"
         />`,

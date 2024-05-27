@@ -6,6 +6,8 @@ function watchBars() {
   const dataLegendX = document.querySelector('.data-legend .data-x');
   const dataLegendY = document.querySelector('.data-legend .data-y');
 
+  const xAxises = document.querySelectorAll('.graph text.x-axis');
+
   if (dataLegend && dataLegendX && dataLegendY) {
     for (const bar of bars) {
       bar.addEventListener('mouseover', (e) => {
@@ -21,22 +23,44 @@ function watchBars() {
         )}`;
         dataLegend.setAttribute(
           'style',
-          `top: ${(100 + Number(y)) * 5.25 + 20}px; left: ${
-            (Number(x) + 0.5 * Number(width)) * 10
-          }px;`,
+          `top: ${100 + Number(y) + 4}%; left: ${Number(x) + 0.5 * width}%;`,
         );
         dataLegend.classList.add('show');
       });
 
-      bar.addEventListener('mouseout', (e) => {
+      bar.addEventListener('mouseleave', (e) => {
         if (e.relatedTarget != dataLegend) {
           dataLegend.classList.remove('show');
         }
       });
     }
-    dataLegend.addEventListener('mouseout', (e) => {
-      console.log('mouse out', { r: e.relatedTarget.nodeName });
-      if (e.relatedTarget.nodeName != 'rect') {
+
+    for (const xAxis of xAxises) {
+      xAxis.addEventListener('mouseover', (e) => {
+        const dataX = e.target.getAttribute('data-x');
+        const dataY = e.target.getAttribute('data-y');
+
+        const x = e.target.getAttribute('x').replace('%', '');
+        dataLegendX.innerHTML = dataX;
+        dataLegendY.innerHTML = `<span class="circle"></span> Peluang: ${formatYLegend(
+          Number(dataY),
+        )}`;
+        dataLegend.setAttribute('style', `top: 82.5%; left: ${x}%;`);
+        dataLegend.classList.add('show');
+      });
+
+      xAxis.addEventListener('mouseleave', (e) => {
+        if (e.relatedTarget != dataLegend) {
+          dataLegend.classList.remove('show');
+        }
+      });
+    }
+
+    dataLegend.addEventListener('mouseleave', (e) => {
+      if (
+        e.relatedTarget.nodeName != 'rect' ||
+        e.relatedTarget.nodeName != 'text'
+      ) {
         dataLegend.classList.remove('show');
       }
     });
